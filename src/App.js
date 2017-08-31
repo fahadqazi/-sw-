@@ -8,15 +8,15 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-            data: []
+            payload: []
         }
     }
 
     componentDidMount(){
-        const url = 'https://swapi.co/api/people/'
+        const url = 'https://swapi.co/api/people/';
         axios.get(url)
             .then((data) => {
-                this.setState(data)
+                this.setState({payload: data})
                 console.log(data.data.results[0])
             })
             .catch(error => {
@@ -26,10 +26,10 @@ class App extends Component {
 
 
   render() {
-    const data = this.state.data;
-
+    const payload = this.state.payload;
+    console.log(payload);
     return (
-        <CharacterList data={data}/>
+        <CharacterList data={payload}/>
     );
   }
 }

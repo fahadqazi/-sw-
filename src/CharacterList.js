@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
+import CourseListRow from './CourseListRow';
 
-class CharacterList extends Component{
-    render(){
-        console.log('in characterList', this.props.data);
+const CharacterList = ({data}) =>{
+        console.log('in character list', data);
         return (
             <table className="table">
                 <thead>
@@ -14,13 +14,12 @@ class CharacterList extends Component{
                 </tr>
                 </thead>
                 <tbody>
-                {/*{courses.map(course =>*/}
-                    {/*<CourseListRow key={course.id} course={course}/>*/}
+                {/*{data.map(item =>*/}
+                    {/*<CourseListRow key={item.name} item={item}/>*/}
                 {/*)}*/}
                 </tbody>
             </table>
         );
-    };
 }
 
 export default CharacterList;
