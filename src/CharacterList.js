@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
-import CourseListRow from './CourseListRow';
+import React from 'react';
+import CharacterListRow from './CharacterListRow';
 
-const CharacterList = ({data}) =>{
-        console.log('in character list', data);
+const CharacterList = ({data}) => {
+
+    // console.log(data)
         return (
             <table className="table">
                 <thead>
@@ -14,9 +15,7 @@ const CharacterList = ({data}) =>{
                 </tr>
                 </thead>
                 <tbody>
-                {/*{data.map(item =>*/}
-                    {/*<CourseListRow key={item.name} item={item}/>*/}
-                {/*)}*/}
+                {data.map(item => <CharacterListRow key={item.name} item={item}/>)}
                 </tbody>
             </table>
         );

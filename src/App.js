@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import axios from 'axios';
 import CharacterList from './CharacterList'
 import './App.css';
@@ -15,9 +14,9 @@ class App extends Component {
     componentDidMount(){
         const url = 'https://swapi.co/api/people/';
         axios.get(url)
-            .then((data) => {
-                this.setState({payload: data})
-                console.log(data.data.results[0])
+            .then((response) => {
+                this.setState({payload: response.data.results})
+                console.log(response.data.results)
             })
             .catch(error => {
                 console.error(error)
@@ -26,8 +25,12 @@ class App extends Component {
 
 
   render() {
+        if(!this.state.payload){
+            return(
+                <div>Loading....</div>
+            )
+        }
     const payload = this.state.payload;
-    console.log(payload);
     return (
         <CharacterList data={payload}/>
     );
