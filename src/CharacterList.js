@@ -6,10 +6,10 @@ const CharacterList = ({data, sortByName}) => {
             <table className="table">
                 <thead>
                 <tr>
-                    <th><button className='btn btn-primary' onClick={sortByName}>Name</button></th>
-                    <th>Gender</th>
+                    <th>Name</th>
                     <th>Created</th>
-                    <th><button className='btn btn-primary'>Height</button></th>
+                    <th>Height</th>
+                    <th>Mass</th>
                     <th>Favourite</th>
                 </tr>
                 </thead>
