@@ -11,6 +11,7 @@ class App extends Component {
             favs: []
         }
         this.sortByName = this.sortByName.bind(this);
+        this.addToFavs = this.addToFavs.bind(this);
     }
 
     componentDidMount() {
@@ -44,6 +45,11 @@ class App extends Component {
     addToFavs = (character) => {
         const favList = this.state.payload.map((item) => {
             if (item.name === character.name){
+                if (character.fav === true){
+                    return Object.assign({}, item, {
+                       fav: false
+                    });
+                }
                 return Object.assign({}, item, {
                     fav: true
                 });
@@ -51,9 +57,10 @@ class App extends Component {
                 return item;
             }
         });
-
+        this.setState({
+            payload: favList
+        })
     };
-
 
     render() {
         console.log(this.state.payload);
@@ -66,7 +73,7 @@ class App extends Component {
         return (
             <div className='appContainer'>
                 <div>
-                    <CharacterList data={payload} fav={this.addToFavs}/>
+                    <CharacterList data={payload} addToFavs={this.addToFavs}/>
                 </div>
                 <button className="btn btn-primary" onClick={this.sortByName}>Sort By Name</button>
             </div>

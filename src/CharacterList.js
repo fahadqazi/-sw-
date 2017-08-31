@@ -1,7 +1,7 @@
 import React from 'react';
 import CharacterListRow from './CharacterListRow';
 
-const CharacterList = ({data, sortByName}) => {
+const CharacterList = ({data, addToFavs}) => {
         return (
             <table className="table">
                 <thead>
@@ -14,7 +14,7 @@ const CharacterList = ({data, sortByName}) => {
                 </tr>
                 </thead>
                 <tbody>
-                {data.map(item => <CharacterListRow key={item.name} item={item}/>)}
+                {data.map(item => <CharacterListRow key={item.name} item={item} addToFavs={addToFavs}/>)}
                 </tbody>
             </table>
         );

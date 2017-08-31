@@ -13,7 +13,8 @@ class CharacterListRow extends Component{
     selectHeart = () => {
         this.setState({
             selected: !this.state.selected
-        })
+        });
+        this.props.addToFavs(this.props.item);
     }
 
     toggleStyle = () => {
@@ -22,6 +23,8 @@ class CharacterListRow extends Component{
         }
         return 'glyphicon glyphicon-heart heart'
     };
+
+
 
     render() {
         const {name, created, height, mass} = this.props.item;
