@@ -1,17 +1,16 @@
 import React from 'react';
 import CharacterListRow from './CharacterListRow';
 
-const CharacterList = ({data}) => {
-
-    // console.log(data)
+const CharacterList = ({data, sortByName}) => {
         return (
             <table className="table">
                 <thead>
                 <tr>
-                    <th>Name</th>
+                    <th><button className='btn btn-primary' onClick={sortByName}>Name</button></th>
                     <th>Gender</th>
                     <th>Created</th>
-                    <th>Height</th>
+                    <th><button className='btn btn-primary'>Height</button></th>
+                    <th>Favourite</th>
                 </tr>
                 </thead>
                 <tbody>
