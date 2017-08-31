@@ -10,7 +10,6 @@ const CharacterList = ({data, addToFavs}) => {
                     <th>Created</th>
                     <th>Height</th>
                     <th>Mass</th>
-                    <th>Favourite</th>
                 </tr>
                 </thead>
                 <tbody>

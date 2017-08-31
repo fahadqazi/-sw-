@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import CharacterList from './CharacterList'
+import FavsList from './FavsList';
 import './App.css';
 
 class App extends Component {
@@ -76,6 +77,8 @@ class App extends Component {
                     <CharacterList data={payload} addToFavs={this.addToFavs}/>
                 </div>
                 <button className="btn btn-primary" onClick={this.sortByName}>Sort By Name</button>
+
+               <FavsList data={this.state.payload}/>
             </div>
         );
     }
