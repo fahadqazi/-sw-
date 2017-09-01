@@ -64,22 +64,11 @@ class App extends Component {
         })
     };
 
-    toggleModal = () => {
-        console.log('toggle')
+    toggleModal = (character) => {
+        console.log(character)
         this.setState({
             isVisible: !this.state.isVisible
         })
-    };
-
-    openModal = (character) => {
-        console.log(character)
-        console.log('getting data');
-        this.setState({
-            isVisible: true
-        });
-        return (
-            <h1>{character.name}</h1>
-        )
     };
 
     render() {
@@ -93,14 +82,17 @@ class App extends Component {
         return (
             <div className='appContainer'>
                 <div>
-                    <CharacterList data={payload} addToFavs={this.addToFavs} openModal={this.openModal}/>
+                    <CharacterList 
+                        data={payload} 
+                        addToFavs={this.addToFavs}
+                        toggleModal={this.toggleModal}/>
                 </div>
                 <button className="btn btn-primary" onClick={this.sortByName}>Sort By Name</button>
                 <hr/>
                <FavsList data={this.state.payload}/>
-
+                
                 <Modal show={this.state.isVisible} onClose={this.toggleModal}>
-                    {this.openModal()}
+                    <div>Hi</div>
                 </Modal>
             </div>
         );

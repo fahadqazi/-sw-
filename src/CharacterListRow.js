@@ -9,6 +9,7 @@ class CharacterListRow extends Component{
         };
         this.selectHeart = this.selectHeart.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.formattedDate = this.formattedDate.bind(this);
     }
 
     selectHeart = () => {
@@ -27,14 +28,18 @@ class CharacterListRow extends Component{
 
     handleClick = () => {
         console.log('handling')
-        this.props.openModal(this.props.item)
+        this.props.toggleModal(this.props.item)
     };
+
+    formattedDate = (rawDate) => {
+        let newTime = new Date(rawDate);
+        return `${newTime.getFullYear()}-${newTime.getMonth()}-${newTime.getDate()} @
+     ${newTime.getHours()}:${newTime.getMinutes()}`;
+    }
 
     render() {
         const {name, created, height, mass} = this.props.item;
-        let newTime = new Date(created);
-        const time = `${newTime.getFullYear()}-${newTime.getMonth()}-${newTime.getDate()} @
-     ${newTime.getHours()}:${newTime.getMinutes()}`;
+        const time = this.formattedDate(created);
         return (
             <tr>
                 <td><span onClick={this.handleClick}>{name}</span></td>

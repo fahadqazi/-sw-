@@ -1,7 +1,7 @@
 import React from 'react';
 import CharacterListRow from './CharacterListRow';
 
-const CharacterList = ({data, addToFavs, openModal}) => {
+const CharacterList = ({data, addToFavs, openModal, toggleModal}) => {
         return (
             <table className="table">
                 <thead>
@@ -14,7 +14,12 @@ const CharacterList = ({data, addToFavs, openModal}) => {
                 </thead>
                 <tbody>
                 {data.map(item =>
-                    <CharacterListRow key={item.name} item={item} addToFavs={addToFavs} openModal={openModal}/>)}
+                    <CharacterListRow 
+                        key={item.name} 
+                        item={item} 
+                        addToFavs={addToFavs} 
+                        toggleModal={toggleModal}
+                        />)}
                 </tbody>
             </table>
         );
