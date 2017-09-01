@@ -3,6 +3,7 @@ import axios from 'axios';
 import CharacterList from './CharacterList'
 import FavsList from './FavsList';
 import Modal from 'simple-react-modal';
+import ModalContent from './ModalContent';
 import './App.css';
 
 class App extends Component {
@@ -10,7 +11,8 @@ class App extends Component {
         super(props);
         this.state = {
             payload: [],
-            isVisible: false
+            isVisible: false,
+            modalContent: {}
         }
         this.sortByName = this.sortByName.bind(this);
         this.addToFavs = this.addToFavs.bind(this);
@@ -67,12 +69,12 @@ class App extends Component {
     toggleModal = (character) => {
         console.log(character)
         this.setState({
-            isVisible: !this.state.isVisible
-        })
+            isVisible: !this.state.isVisible,
+            modalContent: character
+        });
     };
 
     render() {
-        console.log(this.state.payload);
         if (!this.state.payload) {
             return (
                 <div>Loading....</div>
@@ -92,7 +94,7 @@ class App extends Component {
                <FavsList data={this.state.payload}/>
                 
                 <Modal show={this.state.isVisible} onClose={this.toggleModal}>
-                    <div>Hi</div>
+                    <ModalContent content={this.state.modalContent}/>
                 </Modal>
             </div>
         );

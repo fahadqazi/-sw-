@@ -33,17 +33,17 @@ class CharacterListRow extends Component{
 
     formattedDate = (rawDate) => {
         let newTime = new Date(rawDate);
-        return `${newTime.getFullYear()}-${newTime.getMonth()}-${newTime.getDate()} @
+        return `${newTime.getDate()}-${newTime.getMonth()}-${newTime.getFullYear()} @
      ${newTime.getHours()}:${newTime.getMinutes()}`;
     }
 
     render() {
         const {name, created, height, mass} = this.props.item;
-        const time = this.formattedDate(created);
+        const date = this.formattedDate(created);
         return (
             <tr>
-                <td><span onClick={this.handleClick}>{name}</span></td>
-                <td>{time}</td>
+                <td><a><span onClick={this.handleClick}>{name}</span></a></td>
+                <td>{date}</td>
                 <td>{height}</td>
                 <td>{mass}</td>
                 <td><span className={this.toggleStyle()} style={{color: 'red' }} onClick={this.selectHeart}></span></td>
