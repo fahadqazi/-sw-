@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import CharacterList from './CharacterList'
 import FavsList from './FavsList';
+import Modal from 'simple-react-modal';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +10,7 @@ class App extends Component {
         super(props);
         this.state = {
             payload: [],
-            favs: []
+            isVisible: false
         }
         this.sortByName = this.sortByName.bind(this);
         this.addToFavs = this.addToFavs.bind(this);
@@ -63,6 +64,24 @@ class App extends Component {
         })
     };
 
+    toggleModal = () => {
+        console.log('toggle')
+        this.setState({
+            isVisible: !this.state.isVisible
+        })
+    };
+
+    openModal = (character) => {
+        console.log(character)
+        console.log('getting data');
+        this.setState({
+            isVisible: true
+        });
+        return (
+            <h1>{character.name}</h1>
+        )
+    };
+
     render() {
         console.log(this.state.payload);
         if (!this.state.payload) {
@@ -74,11 +93,15 @@ class App extends Component {
         return (
             <div className='appContainer'>
                 <div>
-                    <CharacterList data={payload} addToFavs={this.addToFavs}/>
+                    <CharacterList data={payload} addToFavs={this.addToFavs} openModal={this.openModal}/>
                 </div>
                 <button className="btn btn-primary" onClick={this.sortByName}>Sort By Name</button>
-
+                <hr/>
                <FavsList data={this.state.payload}/>
+
+                <Modal show={this.state.isVisible} onClose={this.toggleModal}>
+                    {this.openModal()}
+                </Modal>
             </div>
         );
     }

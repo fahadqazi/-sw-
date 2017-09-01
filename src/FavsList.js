@@ -5,6 +5,7 @@ const FavsList = (props) => {
         <div>
             <h3>Favourites</h3>
             <div className='favourites'>
+                <ul>
                 {props.data.map(item => {
                     if (item.fav === true) {
                         return (
@@ -12,6 +13,7 @@ const FavsList = (props) => {
                         )
                     }
                 })}
+                </ul>
             </div>
         </div>
     );

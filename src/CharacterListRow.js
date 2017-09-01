@@ -8,6 +8,7 @@ class CharacterListRow extends Component{
             selected: false
         };
         this.selectHeart = this.selectHeart.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     selectHeart = () => {
@@ -24,6 +25,11 @@ class CharacterListRow extends Component{
         return 'glyphicon glyphicon-heart heart'
     };
 
+    handleClick = () => {
+        console.log('handling')
+        this.props.openModal(this.props.item)
+    };
+
     render() {
         const {name, created, height, mass} = this.props.item;
         let newTime = new Date(created);
@@ -31,7 +37,7 @@ class CharacterListRow extends Component{
      ${newTime.getHours()}:${newTime.getMinutes()}`;
         return (
             <tr>
-                <td>{name}</td>
+                <td><span onClick={this.handleClick}>{name}</span></td>
                 <td>{time}</td>
                 <td>{height}</td>
                 <td>{mass}</td>
