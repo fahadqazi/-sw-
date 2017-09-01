@@ -27,7 +27,6 @@ class CharacterListRow extends Component{
     };
 
     handleClick = () => {
-        console.log('handling')
         this.props.toggleModal(this.props.item)
     };
 

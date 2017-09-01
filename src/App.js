@@ -23,7 +23,6 @@ class App extends Component {
         axios.get(url)
             .then((response) => {
                 this.setState({payload: response.data.results})
-                console.log(response.data.results)
             })
             .catch(error => {
                 console.error(error)
@@ -67,7 +66,6 @@ class App extends Component {
     };
 
     toggleModal = (character) => {
-        console.log(character)
         this.setState({
             isVisible: !this.state.isVisible,
             modalContent: character
