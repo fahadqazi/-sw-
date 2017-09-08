@@ -1,8 +1,8 @@
 # Test App
 
-* >clone repo
-* >run ```yarn```
-* >run ```yarn start```
+>clone repo
+>run ```yarn```
+>run ```yarn start```
 
 ### App Features:
 1. Click on names to see detailed view
